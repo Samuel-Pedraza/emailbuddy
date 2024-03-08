@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LemonSqueezyController;
+use App\Http\Controllers\Payments\LemonSqueezyController;
+use App\Http\Controllers\Payments\PaddleController;
+use App\Http\Controllers\Payments\StripeController;
 use App\Http\Controllers\SitemapController;
-use App\Http\Controllers\StripeController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\Subscribed;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,6 +25,7 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('sitemap', [SitemapController::class, 'index'])->name('sitemap');
 
+// Social Auth Endpoints
 Route::get('/auth/redirect/{driver}', [SocialiteController::class, 'redirect'])->name('socialite.redirect');
 Route::get('/auth/callback/{driver}', [SocialiteController::class, 'callback'])->name('socialite.callback');
 
@@ -56,6 +58,16 @@ Route::middleware([
         // move this part outside "auth:sanctum" middleware and change the logic inside method
         Route::get('product-checkout/{variantId}', [LemonSqueezyController::class, 'productCheckout'])->name('product.checkout');
         Route::get('billing', [LemonSqueezyController::class, 'billing'])->name('billing'); // Redirects to Customer Portal
+    });
+
+    Route::prefix('paddle')->name('paddle.')->group(function () {
+        Route::get('subscription-checkout/{productId}/{variantId}', [PaddleController::class, 'subscriptionCheckout'])
+            ->name('subscription.checkout');
+        // If your product checkout does not require auth user,
+        // move this part outside "auth:sanctum" middleware and change the logic inside method
+        Route::get('product-checkout/{priceId}', [PaddleController::class, 'productCheckout'])
+            ->name('product.checkout');
+        Route::get('billing', [PaddleController::class, 'billing'])->name('billing'); // Redirects to Customer Portal
     });
 
     Route::middleware([Subscribed::class])->group(function () {
