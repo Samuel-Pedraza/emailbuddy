@@ -40,7 +40,7 @@
                 <input type="radio" name="rating-2" class="mask mask-star-2 bg-yellow-400" />
             </div>
             <div class="mt-1">
-                <p><span class="font-bold">987</span> makers saved on avg. <b>3900$</b> with LaraFast</p>
+                <p><span class="font-bold">987</span> developers trust us</p>
             </div>
         </div>
     </div>
