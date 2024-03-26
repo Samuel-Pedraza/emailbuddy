@@ -18,14 +18,15 @@ class UsersStats extends BaseWidget
 
     protected function getStats(): array
     {
+        $registeredToday = $this->getPageTableQuery()->where('created_at', '>', today()->startOfDay())->count();
+        $lastSevenDays = $this->getPageTableQuery()->where('created_at', '>', now()->subDays(7)->startOfDay())->count();
+        $lastMonth = $this->getPageTableQuery()->where('created_at', '>', now()->subMonth()->startOfDay())->count();
+
         return [
             Stat::make('Total Users', $this->getPageTableQuery()->count()),
-            Stat::make('Growth', '192.1k')
-                ->description('32k increase')
-                ->descriptionIcon('heroicon-m-arrow-trending-up')
-                ->color('success'),
-            Stat::make('Bounce rate', '21%'),
-            Stat::make('Average time on page', '3:12'),
+            Stat::make('Registered Today', $registeredToday),
+            Stat::make('Last 7 Days', $lastSevenDays),
+            Stat::make('Last 30 Days', $lastMonth),
         ];
     }
 }
