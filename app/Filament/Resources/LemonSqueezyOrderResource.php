@@ -2,17 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OrderResource\Pages;
-use App\Filament\Resources\OrderResource\Widgets\OrdersStats;
+use App\Filament\Resources\LemonSqueezyOrderResource\Pages;
+use App\Filament\Resources\LemonSqueezyOrderResource\Widgets\OrdersStats;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class OrderResource extends Resource
+//
+class LemonSqueezyOrderResource extends Resource
 {
     protected static ?string $model = \LemonSqueezy\Laravel\Order::class;
-
+    protected static ?string $modelLabel = 'LemonSqueezy Orders';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -37,6 +38,7 @@ class OrderResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge(),
+                // Change the currency to match your store currency
                 Tables\Columns\TextColumn::make('total')
                     ->money('USD', divideBy: 100)
                     ->searchable(),

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\OrderResource\Widgets;
+namespace App\Filament\Resources\LemonSqueezyOrderResource\Widgets;
 
-use App\Filament\Resources\OrderResource\Pages\ListOrders;
+use App\Filament\Resources\LemonSqueezyOrderResource\Pages\ListOrders;
 use Filament\Widgets\Concerns\InteractsWithPageTable;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
