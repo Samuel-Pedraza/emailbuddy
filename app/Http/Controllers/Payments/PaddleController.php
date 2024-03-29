@@ -30,12 +30,20 @@ class PaddleController extends Controller
         return $user->subscribe($variant);
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function productCheckout(Request $request, $priceId)
     {
         $checkout = $request->user()->checkout($priceId)
             ->returnTo(route('dashboard'));
 
-        return $checkout->getItems();
+        return \response()->json([
+            'items' => json_encode($checkout->getItems(), JSON_THROW_ON_ERROR),
+            'paddle_id' => $checkout->getCustomer()->paddle_id,
+            'custom' => json_encode($checkout->getCustomData(), JSON_THROW_ON_ERROR),
+            'return_url' => $checkout->getReturnUrl(),
+        ]);
     }
 
     public function billing(Request $request): Response

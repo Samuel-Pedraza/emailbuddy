@@ -7,8 +7,6 @@ use App\Http\Controllers\Payments\PaddleController;
 use App\Http\Controllers\Payments\StripeController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SocialiteController;
-use App\Http\Controllers\StripeController;
-use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;

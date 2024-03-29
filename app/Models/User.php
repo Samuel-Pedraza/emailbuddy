@@ -14,12 +14,13 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 // Use this for Stripe
-use Laravel\Cashier\Billable;
+//use Laravel\Cashier\Billable;
+
 // Use this for LemonSqueezy
 //use LemonSqueezy\Laravel\Billable;
-//use Laravel\Cashier\Billable; // Use this for Stripe
-//use LemonSqueezy\Laravel\Billable; // Use this for LemonSqueezy
-use Laravel\Paddle\Billable; // Use this for Paddle
+
+// Use this for Paddle
+use Laravel\Paddle\Billable;
 
 class User extends Authenticatable implements FilamentUser
 {

@@ -7,8 +7,10 @@ import Faq from "@/Components/Faq.vue";
 import CTA from "@/Components/CTA.vue";
 import Seo from "@/Components/Seo.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
+import PaddlePlans from "@/Components/Paddle/PaddlePlans.vue";
 
 defineProps({
+    checkout: Object,
     canLogin: Boolean,
     canRegister: Boolean,
 });
@@ -20,7 +22,7 @@ defineProps({
         <Hero/>
         <Partners/>
         <ContentWithImage/>
-        <Plans/>
+        <PaddlePlans :checkout="checkout"/>
         <Faq/>
         <CTA/>
     </HomeLayout>
