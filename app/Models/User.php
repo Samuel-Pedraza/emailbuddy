@@ -6,12 +6,17 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens; // Use this for Stripe
+use Laravel\Sanctum\HasApiTokens;
 
+// Use this for Stripe
+use Laravel\Cashier\Billable;
+// Use this for LemonSqueezy
+//use LemonSqueezy\Laravel\Billable;
 //use Laravel\Cashier\Billable; // Use this for Stripe
 //use LemonSqueezy\Laravel\Billable; // Use this for LemonSqueezy
 use Laravel\Paddle\Billable; // Use this for Paddle
@@ -69,6 +74,14 @@ class User extends Authenticatable implements FilamentUser
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // Relations
+    public function socialAccounts(): HasMany
+    {
+        return $this->hasMany(SocialAccount::class);
+    }
+
+    // End Relations
 
     public function canAccessPanel(Panel $panel): bool
     {

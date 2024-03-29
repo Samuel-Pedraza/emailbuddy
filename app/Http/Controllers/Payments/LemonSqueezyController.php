@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Payments;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use LemonSqueezy\Laravel\Checkout;
 use Symfony\Component\HttpFoundation\Response;
 
 class LemonSqueezyController extends Controller
 {
-    public function subscriptionCheckout(Request $request, $product, $variant)
+    public function subscriptionCheckout(Request $request, $product, $variant): RedirectResponse
     {
         $user = $request->user();
 
@@ -30,7 +32,7 @@ class LemonSqueezyController extends Controller
         return $user->subscribe($variant);
     }
 
-    public function productCheckout(Request $request, $variantId): \LemonSqueezy\Laravel\Checkout
+    public function productCheckout(Request $request, $variantId): Checkout
     {
         return $request->user()->checkout($variantId)
             ->redirectTo(url('/'));
