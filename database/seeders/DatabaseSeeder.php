@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
                     'total' => $subtotal - $discount + $tax,
                     'billable_id' => User::factory()->create(),
                     'billable_type' => User::class,
-                    'identifier' => fake()->unique()->uuid()
+                    'identifier' => fake()->unique()->uuid(),
                 ]);
             } catch (\Exception $exception) {
                 continue;
