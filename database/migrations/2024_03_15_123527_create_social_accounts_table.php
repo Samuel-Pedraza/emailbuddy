@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('social_accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->bigInteger('account_id');
+            $table->string('account_id');
             $table->string('provider');
             $table->text('token');
             $table->timestamps();
