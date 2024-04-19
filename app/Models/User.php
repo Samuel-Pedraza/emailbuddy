@@ -9,13 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-
 // Use this for Stripe
-//use Laravel\Cashier\Billable;
-
+//use Laravel\Sanctum\HasApiTokens;
 // Use this for LemonSqueezy
 //use LemonSqueezy\Laravel\Billable;
 

@@ -13,7 +13,9 @@ use Filament\Tables\Table;
 class LemonSqueezyOrderResource extends Resource
 {
     protected static ?string $model = \LemonSqueezy\Laravel\Order::class;
+
     protected static ?string $modelLabel = 'LemonSqueezy Orders';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
