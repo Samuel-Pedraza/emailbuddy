@@ -4,9 +4,10 @@ use App\Http\Controllers\Auth\MagicLinkController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LemonSqueezyController;
+use App\Http\Controllers\Payments\LemonSqueezyController;
+use App\Http\Controllers\Payments\PaddleController;
+use App\Http\Controllers\Payments\StripeController;
 use App\Http\Controllers\SitemapController;
-use App\Http\Controllers\StripeController;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +40,11 @@ Route::prefix('auth')->group(function () {
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{article:slug}', [BlogController::class, 'article'])->name('blog.article');
 
+// Paddle Checkout Price endpoint is outside of auth middleware
+// If you want to use it for authenticated users, move it inside the middleware
+// Instructions for authenticated users are in the comments of the PaddleController.php file
+Route::get('paddle/checkout/{price}', [PaddleController::class, 'checkout'])->name('paddle.checkout');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -65,6 +71,16 @@ Route::middleware([
         // move this part outside "auth:sanctum" middleware and change the logic inside method
         Route::get('product-checkout/{variantId}', [LemonSqueezyController::class, 'productCheckout'])->name('product.checkout');
         Route::get('billing', [LemonSqueezyController::class, 'billing'])->name('billing'); // Redirects to Customer Portal
+    });
+
+    // Paddle Routes
+    // Paddle Plan Checkouts can be found in resources/js/Components/Paddle/PaddlePlans.vue component
+
+    Route::prefix('paddle')->name('paddle.')->group(function () {
+        Route::get('/subscription/{price}/swap', [PaddleController::class, 'subscriptionSwap'])
+            ->name('subscription.swap');
+        Route::get('/subscription/cancel', [PaddleController::class, 'subscriptionCancel'])
+            ->name('subscription.cancel');
     });
 
     Route::middleware([Subscribed::class])->group(function () {

@@ -16,6 +16,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/cashier": "^15.2",
+        "laravel/cashier-paddle": "^2.4",
         "laravel/framework": "^11.0",
         "laravel/jetstream": "^5.0",
         "laravel/prompts": "^0.1.15",
