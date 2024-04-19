@@ -40,6 +40,11 @@ Route::prefix('auth')->group(function () {
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{article:slug}', [BlogController::class, 'article'])->name('blog.article');
 
+// Paddle Checkout Price endpoint is outside of auth middleware
+// If you want to use it for authenticated users, move it inside the middleware
+// Instructions for authenticated users are in the comments of the PaddleController.php file
+Route::get('paddle/checkout/{price}', [PaddleController::class, 'checkout'])->name('paddle.checkout');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -68,14 +73,14 @@ Route::middleware([
         Route::get('billing', [LemonSqueezyController::class, 'billing'])->name('billing'); // Redirects to Customer Portal
     });
 
+    // Paddle Routes
+    // Paddle Plan Checkouts can be found in resources/js/Components/Paddle/PaddlePlans.vue component
+
     Route::prefix('paddle')->name('paddle.')->group(function () {
-        Route::get('subscription-checkout/{productId}/{variantId}', [PaddleController::class, 'subscriptionCheckout'])
-            ->name('subscription.checkout');
-        // If your product checkout does not require auth user,
-        // move this part outside "auth:sanctum" middleware and change the logic inside method
-        Route::get('product-checkout/{priceId}', [PaddleController::class, 'productCheckout'])
-            ->name('product.checkout');
-        Route::get('billing', [PaddleController::class, 'billing'])->name('billing'); // Redirects to Customer Portal
+        Route::get('/subscription/{price}/swap', [PaddleController::class, 'subscriptionSwap'])
+            ->name('subscription.swap');
+        Route::get('/subscription/cancel', [PaddleController::class, 'subscriptionCancel'])
+            ->name('subscription.cancel');
     });
 
     Route::middleware([Subscribed::class])->group(function () {

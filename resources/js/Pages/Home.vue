@@ -10,7 +10,6 @@ import HomeLayout from "@/Layouts/HomeLayout.vue";
 import PaddlePlans from "@/Components/Paddle/PaddlePlans.vue";
 
 defineProps({
-    checkout: Object,
     canLogin: Boolean,
     canRegister: Boolean,
 });
@@ -22,7 +21,9 @@ defineProps({
         <Hero/>
         <Partners/>
         <ContentWithImage/>
-        <PaddlePlans :checkout="checkout"/>
+<!--        for Paddle-->
+<!--        <PaddlePlans/>-->
+        <Plans/>
         <Faq/>
         <CTA/>
     </HomeLayout>

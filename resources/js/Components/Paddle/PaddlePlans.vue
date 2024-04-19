@@ -20,7 +20,7 @@ const plans = [
         ],
         // productId: 1,
         // variantId: 1,
-        priceId: '1'
+        priceId: null
     },
     {
         name: 'Starter',
@@ -74,11 +74,8 @@ const plans = [
                     <span class="text-4xl font-extrabold">${{ plan.price }}</span>
                     <span v-if="plan.price !== '0'" class="text-base font-medium">/{{ plan.interval }}</span>
                 </p>
-                <PaddleButton v-if="$page.props.auth.user" :checkout="checkout"/>
-                <a v-else :href="route('register')"
-                   class="mb-6 btn btn-secondary btn-wide text-center mx-auto flex">
-                    Choose Plan
-                </a>
+
+                <PaddleButton :priceId="plan.priceId"/>
                 <p class="text-sm mb-4">*7 Days Free Trial</p>
                 <ul>
                     <li v-for="feature in plan.features" class="flex">

@@ -9,47 +9,33 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PaddleController extends Controller
 {
-    public function subscriptionCheckout(Request $request, $product, $variant)
+    public function checkout($priceId)
     {
-        $user = $request->user();
-
-        if ($user->subscription()?->hasVariant($variant)) {
-            return redirect()->back()->dangerBanner('You are already subscribed to that plan');
-        }
-
-        if ($user->subscribed() && $user->subscription()?->valid()) {
-            $user->subscription()
-                ?->load('owner')
-                ->endTrial()
-                ->swap($product, $variant);
-
-            // Replace back() with the route where user should be redirected after successful subscription
-            return redirect()->back()->banner('You have successfully subscribed to '.$variant.' plan');
-        }
-
-        return $user->subscribe($variant);
-    }
-
-    /**
-     * @throws \JsonException
-     */
-    public function productCheckout(Request $request, $priceId)
-    {
-        $checkout = $request->user()->checkout($priceId)
+        // If your checkout requires auth user
+        // Replace this with Auth::user()->checkout($priceId)->returnTo(route('dashboard'))
+        $checkout =\Laravel\Paddle\Checkout::guest([$priceId])
             ->returnTo(route('dashboard'));
 
-        return \response()->json([
-            'items' => json_encode($checkout->getItems(), JSON_THROW_ON_ERROR),
-            'paddle_id' => $checkout->getCustomer()->paddle_id,
-            'custom' => json_encode($checkout->getCustomData(), JSON_THROW_ON_ERROR),
+        $checkout = [
+            'items' => $checkout->getItems(),
+            'custom' => $checkout->getCustomData(),
             'return_url' => $checkout->getReturnUrl(),
-        ]);
+        ];
+
+        return \response()->json($checkout);
     }
 
-    public function billing(Request $request): Response
+    public function subscriptionSwap(Request $request, $priceId): \Illuminate\Http\RedirectResponse
     {
-        $url = $request->user()->customerPortalUrl();
+        $request->user()->subscription()->swap($priceId);
 
-        return Inertia::location($url);
+        return redirect()->route('dashboard');
+    }
+
+    public function subscriptionCancel(Request $request)
+    {
+        $request->user()->subscription()->cancel();
+
+        return redirect()->route('dashboard');
     }
 }

@@ -1,21 +1,41 @@
 <script setup>
 
+import {onMounted, ref} from "vue";
+
 const props = defineProps({
-    checkout: Object
+    priceId: String
+})
+const checkout = ref({
+    items: [],
+    custom: {},
+    return_url: ''
 })
 
+const openCheckout = () => {
+    window.Paddle.Checkout.open({
+        items: checkout.value.items,
+        custom: checkout.value.custom,
+        return_url: checkout.value.return_url,
+    });
+}
+
+onMounted(() => {
+    axios.get('/paddle/checkout/' + props.priceId)
+        .then(response => {
+            checkout.value = response.data
+        })
+        .catch(error => {
+            alert('Error fetching checkout data')
+        })
+});
 </script>
 
 <template>
-    <a
-        href='#!'
-        class='paddle_button'
-        :data-items=checkout.items
-        :data-customer-id=checkout.paddle_id
-        :data-success-url=checkout.return_url
-        >
+    <button
+        @click.prevent='openCheckout'
+        class='mb-6 btn btn-secondary btn-wide text-center mx-auto flex'>
         Buy Product
-    </a>
+    </button>
 </template>
 
 <style scoped>
