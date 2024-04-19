@@ -16,8 +16,9 @@ class LemonSqueezyOrderResource extends Resource
 
     protected static ?string $modelLabel = 'LemonSqueezy Orders';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
+    protected static ?string $navigationGroup = 'Payments';
     public static function form(Form $form): Form
     {
         return $form
