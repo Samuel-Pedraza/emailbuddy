@@ -24,7 +24,7 @@
         "laravel/socialite": "^5.12",
         "laravel/tinker": "^2.8",
         "lemonsqueezy/laravel": "^1.5",
-        "sentry/sentry-laravel": "^4.2",
+        "sentry/sentry-laravel": "^4.4",
         "spatie/laravel-sitemap": "^7.2",
         "spatie/schema-org": "^3.23",
         "tightenco/ziggy": "^1.0"

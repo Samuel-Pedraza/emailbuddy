@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daeb82f86cab687a3631bae13ac5f8b8",
+    "content-hash": "60c74b030b9e27864033551d4df0ed36",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -6371,16 +6371,16 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "4.4.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "f375fed71f2d8ec164dd392c43b0cf716bf7725a"
+                "reference": "9fd34f41b84377d73ae3184627d454993757c581"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/f375fed71f2d8ec164dd392c43b0cf716bf7725a",
-                "reference": "f375fed71f2d8ec164dd392c43b0cf716bf7725a",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/9fd34f41b84377d73ae3184627d454993757c581",
+                "reference": "9fd34f41b84377d73ae3184627d454993757c581",
                 "shasum": ""
             },
             "require": {
@@ -6444,7 +6444,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-laravel/issues",
-                "source": "https://github.com/getsentry/sentry-laravel/tree/4.4.0"
+                "source": "https://github.com/getsentry/sentry-laravel/tree/4.4.1"
             },
             "funding": [
                 {
@@ -6456,7 +6456,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-03-25T13:06:38+00:00"
+            "time": "2024-04-04T14:46:42+00:00"
         },
         {
             "name": "spatie/browsershot",
