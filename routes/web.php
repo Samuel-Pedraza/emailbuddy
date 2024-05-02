@@ -37,6 +37,8 @@ Route::prefix('auth')->group(function () {
     Route::get('/magic-link/{token}', [MagicLinkController::class, 'loginWithMagicLink'])->name('magic.link.login');
 });
 
+Route::post('coming-soon', [\App\Http\Controllers\ComingSoonController::class, 'index'])->name('coming-soon');
+
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{article:slug}', [BlogController::class, 'article'])->name('blog.article');
 
