@@ -14,6 +14,7 @@ use Laravel\Cashier\Billable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+
 // Use this for LemonSqueezy
 //use LemonSqueezy\Laravel\Billable;
 

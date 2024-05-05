@@ -32,11 +32,11 @@ class GenerateOgImages extends Command
         $articles = Article::all();
 
         foreach ($articles as $article) {
-            $this->info('Generating OG image for article: ' . $article->title);
+            $this->info('Generating OG image for article: '.$article->title);
 
             $ogImageService->saveImage($article->title ?? $article->seo_title);
 
-            $this->info('OG image generated: ' . $article->seo_title);
+            $this->info('OG image generated: '.$article->seo_title);
         }
     }
 }

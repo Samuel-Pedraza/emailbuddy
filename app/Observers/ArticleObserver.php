@@ -12,6 +12,7 @@ class ArticleObserver
     {
         //
     }
+
     /**
      * Handle the Article "created" event.
      */

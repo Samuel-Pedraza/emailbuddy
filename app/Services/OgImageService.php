@@ -21,7 +21,7 @@ class OgImageService
                 ->fullPage()
                 ->noSandbox();
 
-            if (!app()->environment('local')) {
+            if (! app()->environment('local')) {
                 $browserShot->setUserDataDir(config('app.app_domain'));
             }
 
@@ -43,7 +43,7 @@ class OgImageService
                 ->fullPage()
                 ->noSandbox();
 
-            if (!app()->environment('local')) {
+            if (! app()->environment('local')) {
                 $browserShot->setUserDataDir(config('app.app_domain'));
             }
 
@@ -60,15 +60,15 @@ class OgImageService
      */
     private function tmpImgFilePaths(string $title): array
     {
-        $fileName = Str::slug($title) . '.png';
+        $fileName = Str::slug($title).'.png';
         $tmpPath = storage_path('app/public/tmp/og-image');
 
-        if (!File::exists($tmpPath)) {
+        if (! File::exists($tmpPath)) {
             File::makeDirectory($tmpPath, 0755, true);
         }
 
         return [
-            'tmpFilePath' => $tmpPath . '/' . $fileName,
+            'tmpFilePath' => $tmpPath.'/'.$fileName,
             'imageFile' => "og-images/$fileName",
         ];
     }
