@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "moment": "^2.30.1",
+        "puppeteer": "^22.7.1",
         "theme-change": "^2.5.0"
     }
 }

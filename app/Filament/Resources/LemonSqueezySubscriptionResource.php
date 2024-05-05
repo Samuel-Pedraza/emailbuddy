@@ -17,6 +17,7 @@ class LemonSqueezySubscriptionResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
     protected static ?string $navigationGroup = 'Payments';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Payments;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Symfony\Component\HttpFoundation\Response;
 
 class PaddleController extends Controller
 {
@@ -13,7 +11,7 @@ class PaddleController extends Controller
     {
         // If your checkout requires auth user
         // Replace this with Auth::user()->checkout($priceId)->returnTo(route('dashboard'))
-        $checkout =\Laravel\Paddle\Checkout::guest([$priceId])
+        $checkout = \Laravel\Paddle\Checkout::guest([$priceId])
             ->returnTo(route('dashboard'));
 
         $checkout = [
