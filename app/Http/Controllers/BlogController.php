@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Services\SchemaOrg;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class BlogController extends Controller
@@ -16,6 +17,10 @@ class BlogController extends Controller
 
         return Inertia::render('Blog', [
             'articles' => $articles,
+            'seo' => [
+                'title' => 'Blog',
+                'description' => 'Blog Description',
+            ],
         ]);
     }
 
@@ -25,6 +30,13 @@ class BlogController extends Controller
 
         \View::share(['schema' => ['article' => app(SchemaOrg::class)->article($article->load('user'))]]);
 
-        return Inertia::render('Article', ['article' => $article->load('user')]);
+        return Inertia::render('Article', [
+            'article' => $article->load('user'),
+            'seo' => [
+                'title' => $article->seo_title ?? $article->title,
+                'description' => $article->seo_description ?? Str::limit($article->content, 160),
+                'canonical' => route('blog.article', ['article' => $article]),
+            ],
+        ]);
     }
 }

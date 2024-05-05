@@ -37,7 +37,7 @@ const plans = [
     {
         name: 'Pro',
         slug: 'pro', // used by stripe, should be your stripe price id
-        description: 'Professional bloggers, influencers, or mid-sized businesses.',
+        description: 'Professional bloggers',
         price: '19.99',
         interval: 'month',
         features: [
@@ -63,7 +63,7 @@ const plans = [
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mx-auto max-w-6xl my-8">
             <div v-for="plan in plans" class="px-8 py-12 border border-base-200 rounded-3xl shadow-xl hover:shadow-2xl cursor-pointer">
                 <p class="text-3xl font-extrabold mb-2">{{ plan.name }}</p>
-                <p class="mb-6">
+                <p class="mb-6 h-16">
                     <span>Best For: </span> <span>{{ plan.description }}</span></p>
                 <p class="mb-6">
                     <span class="text-4xl font-extrabold">${{ plan.price }}</span>
