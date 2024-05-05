@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\MagicLinkController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OgImageController;
 use App\Http\Controllers\Payments\LemonSqueezyController;
 use App\Http\Controllers\Payments\PaddleController;
 use App\Http\Controllers\Payments\StripeController;
@@ -41,6 +42,16 @@ Route::post('coming-soon', [\App\Http\Controllers\ComingSoonController::class, '
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{article:slug}', [BlogController::class, 'article'])->name('blog.article');
+
+Route::get('og-image/{title?}/{description?}', OgImageController::class)->name('og-image');
+
+// For testing and modifying the default image template
+Route::get('og-image-testing', function () {
+    return view('seo.image', [
+        'title' => 'Your dynamic og image',
+        'description' => 'Your dynamic og image description' // optional
+    ]);
+});
 
 // Paddle Checkout Price endpoint is outside of auth middleware
 // If you want to use it for authenticated users, move it inside the middleware
