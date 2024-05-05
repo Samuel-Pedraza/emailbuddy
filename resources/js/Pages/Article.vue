@@ -11,10 +11,6 @@ defineProps({
 
 <template>
     <HomeLayout>
-        <Seo
-            :title="article.seo_title ?? article.title"
-            :description="article.seo_description ?? article.description.substring(0, 160)"/>
-
         <div class="lg:flex lg:items-start lg:justify-between lg:flex-col py-16">
             <div class="min-w-0 flex-1 ">
                 <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
