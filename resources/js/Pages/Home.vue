@@ -8,6 +8,8 @@ import CTA from "@/Components/CTA.vue";
 import Seo from "@/Components/Seo.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import PaddlePlans from "@/Components/Paddle/PaddlePlans.vue";
+import Features from "@/Components/Features.vue";
+import AboutMe from "@/Components/AboutMe.vue";
 
 defineProps({
     canLogin: Boolean,
@@ -23,6 +25,8 @@ defineProps({
         <ContentWithImage/>
 <!--        for Paddle-->
 <!--        <PaddlePlans/>-->
+        <Features/>
+        <AboutMe/>
         <Plans/>
         <Faq/>
         <CTA/>
