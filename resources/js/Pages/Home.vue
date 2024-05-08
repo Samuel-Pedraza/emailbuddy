@@ -5,7 +5,6 @@ import ContentWithImage from "@/Components/ContentWithImage.vue";
 import Plans from "@/Components/Plans.vue";
 import Faq from "@/Components/Faq.vue";
 import CTA from "@/Components/CTA.vue";
-import Seo from "@/Components/Seo.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import PaddlePlans from "@/Components/Paddle/PaddlePlans.vue";
 import Features from "@/Components/Features.vue";
