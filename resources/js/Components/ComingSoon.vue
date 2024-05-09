@@ -21,8 +21,8 @@ const submit = () => {
     <div class="hero min-h-screen bg-base-200">
         <div class="hero-content flex w-full flex-col sm:flex-row">
             <div class="basis-2/3 text-left mr-8">
-                <h1 class="text-5xl sm:text-6xl font-bold leading-12">
-                    Launch your Startup with <br> <span class="text-secondary">Laravel Starter Kit</span> in Days. <br>Save time and money.
+                <h1 class="text-5xl sm:text-7xl font-bold leading-12">
+                    Launch your Startup with <span class="text-secondary">Laravel Starter Kit</span> in Days
                 </h1>
                 <h2 class="py-6"><b>Laravel Starter Kit</b> is your Laravel Jetstream, Tailwind,
                     Inertia.js, Vue boilerplate. <br>Streamline your SaaS app development with ready-to-go components for

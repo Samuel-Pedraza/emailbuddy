@@ -27,6 +27,11 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('sitemap', [SitemapController::class, 'index'])->name('sitemap');
 
+// Demo Coming Soon Page
+Route::get('coming-soon', function () {
+  return Inertia::render('ComingSoon');
+})->name('coming-soon');
+
 Route::prefix('auth')->group(function () {
     Route::get('/redirect/{driver}', [SocialiteController::class, 'redirect'])
         ->name('socialite.redirect');
