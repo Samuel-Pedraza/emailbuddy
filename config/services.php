@@ -53,7 +53,8 @@ return [
             'text-to-speech' => 'audio/speech',
         ],
         'models' => [
-            'gpt4' => 'gpt-4-1106-preview',
+            'gpt4o' => 'gpt-4o',
+            'gpt4' => 'gpt-4-turbo',
             'gpt3.5' => 'gpt-3.5-turbo',
             'dalle' => 'dall-e-3',
             'tts-1' => 'tts-1',
