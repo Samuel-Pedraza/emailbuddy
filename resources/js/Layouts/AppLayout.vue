@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from 'vue';
+import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/Profile/ApplicationMark.vue';
 import Banner from '@/Components/Profile/Banner.vue';
@@ -25,10 +25,6 @@ const switchToTeam = (team) => {
 const logout = () => {
     router.post(route('logout'));
 };
-
-onMounted(() => {
-
-})
 </script>
 
 <template>

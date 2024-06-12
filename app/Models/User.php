@@ -13,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 // Use this for LemonSqueezy
@@ -27,6 +28,7 @@ class User extends Authenticatable implements FilamentUser
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
+    use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -64,6 +66,7 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
         'trial_is_used' => 'boolean',
         'is_admin' => 'boolean',
+        'password' => 'hashed',
     ];
 
     /**

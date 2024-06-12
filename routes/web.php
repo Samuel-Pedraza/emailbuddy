@@ -29,7 +29,7 @@ Route::get('sitemap', [SitemapController::class, 'index'])->name('sitemap');
 
 // Demo Coming Soon Page
 Route::get('coming-soon', function () {
-  return Inertia::render('ComingSoon');
+    return Inertia::render('ComingSoon');
 })->name('coming-soon');
 
 Route::prefix('auth')->group(function () {
