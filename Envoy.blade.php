@@ -1,4 +1,4 @@
-@servers(['web' => ['forge@104.248.196.53']])
+@servers(['web' => ['user@your-ip-address']])
 
 {{--Set up the branch and project folder--}}
 @setup
