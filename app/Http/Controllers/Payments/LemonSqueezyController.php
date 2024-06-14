@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LemonSqueezyController extends Controller
 {
-    public function subscriptionCheckout(Request $request, $product, $variant): RedirectResponse
+    public function subscriptionCheckout(Request $request, $product, $variant): RedirectResponse|Checkout
     {
         $user = $request->user();
 
