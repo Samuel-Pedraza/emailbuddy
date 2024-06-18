@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers\PermissionRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\RoleRelationManager;
 use App\Filament\Resources\UserResource\Widgets\UsersStats;
 use App\Models\User;
@@ -72,6 +73,7 @@ class UserResource extends Resource
     {
         return [
             RoleRelationManager::class,
+            PermissionRelationManager::class,
         ];
     }
 
