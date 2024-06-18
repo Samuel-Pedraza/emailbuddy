@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class RolesSeeder extends Seeder
+class PermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,12 +12,12 @@ class RolesSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            'admin',
-            'user',
+            'add_article',
+            'remove_article',
         ];
 
         foreach ($roles as $role) {
-            \Spatie\Permission\Models\Role::create(['name' => $role]);
+            \Spatie\Permission\Models\Permission::create(['name' => $role]);
         }
     }
 }
