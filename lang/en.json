@@ -1,7 +1,12 @@
 {
-    "The :attribute must contain at least one letter.": "The :attribute must contain at least one letter.",
-    "The :attribute must contain at least one number.": "The :attribute must contain at least one number.",
-    "The :attribute must contain at least one symbol.": "The :attribute must contain at least one symbol.",
-    "The :attribute must contain at least one uppercase and one lowercase letter.": "The :attribute must contain at least one uppercase and one lowercase letter.",
-    "The given :attribute has appeared in a data leak. Please choose a different :attribute.": "The given :attribute has appeared in a data leak. Please choose a different :attribute."
+    "payment.title": "Choose Your Plan",
+    "payment.description": "Select the perfect plan that fits your social media needs. Start with our <b>:value</b> days free trial and upgrade anytime to unlock more powerful features",
+    "payment.free-trial": ":value Days Free Trial",
+    "payment.plans.free": "Free",
+    "payment.plans.free.description": "Individuals or small businesses with moderate social media needs.",
+    "payment.plans.starter": "Starter",
+    "payment.plans.starter.description": "Individuals or small businesses with moderate social media needs.",
+    "payment.plans.pro": "Pro",
+    "payment.plans.pro.description": "Professional bloggers, influencers, or mid-sized businesses.",
+    "Auth": "Authorization"
 }

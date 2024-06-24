@@ -3,22 +3,23 @@ import {ref} from "vue";
 
 const selectedFaq = ref(null);
 
+// Numbers represent index of each array item in php transalation file for FAQ content
 const faqs = [
     {
-        title: 'Faq 1',
-        content: 'Faq Content 1'
+        title: 'pages.home.faq.content.0.title',
+        content: 'pages.home.faq.content.0.description'
     },
     {
-        title: 'Faq 2',
-        content: 'Faq Content 2'
+        title: 'pages.home.faq.content.1.title',
+        content: 'pages.home.faq.content.1.description'
     },
     {
-        title: 'Faq 3',
-        content: 'Faq Content 3'
+        title: 'pages.home.faq.content.2.title',
+        content: 'pages.home.faq.content.2.description'
     },
     {
-        title: 'Faq 4',
-        content: 'Faq Content 4'
+        title: 'pages.home.faq.content.3.title',
+        content: 'pages.home.faq.content.3.description'
     },
 ]
 
@@ -31,8 +32,8 @@ const toggleFaq = (index) => {
     <div class="py-8 sm:py-16 px-8">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:text-center">
-                <p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">FAQs</p>
-                <p class="mt-6 text-lg leading-8">Have questions? We've got you covered! </p>
+                <p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{{ $t('pages.home.faq.title') }}</p>
+                <p class="mt-6 text-lg leading-8">{{ $t('pages.home.faq.description') }}</p>
             </div>
         </div>
         <div class="mx-auto max-w-3xl mt-8">
@@ -41,10 +42,10 @@ const toggleFaq = (index) => {
                      class="collapse collapse-arrow join-item border border-base-300">
                     <input type="radio" :id="'faq-' + index" name="my-accordion" :checked="selectedFaq === index"/>
                     <div class="collapse-title text-xl font-medium" @click="toggleFaq(index)">
-                        {{ faq.title }}
+                        {{ $t(faq.title) }}
                     </div>
                     <div class="collapse-content" v-show="selectedFaq === index">
-                        <p>{{ faq.content }}</p>
+                        <p>{{ $t(faq.content) }}</p>
                     </div>
                 </div>
             </div>

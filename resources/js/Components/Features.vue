@@ -31,12 +31,8 @@ const switchTab = (tab) => {
 <template>
     <div class="max-w-4xl mx-auto sm:py-8 sm:pt-0">
         <div class="mb-12 max-w-2xl text-center mx-auto px-4 sm:px-0">
-            <Heading>
-                Your catchy title goes here
-            </Heading>
-            <p class="mt-2 text-md leading-6">
-                Your catchy description goes here
-            </p>
+            <Heading>{{ $t('pages.home.features.title') }}</Heading>
+            <p class="mt-2 text-md leading-6">{{ $t('pages.home.features.title') }}</p>
         </div>
         <!-- The tabs section-->
         <div role="tablist" class="tabs tabs-bordered overflow-y-scroll">
@@ -49,7 +45,7 @@ const switchTab = (tab) => {
                     <PaintBrushIcon v-if="tab.slug === 'themes'" :class="{'text-secondary': activeTab.slug === 'themes'}" class="w-8 h-8"/>
                     <DocumentTextIcon v-if="tab.slug === 'blog'" :class="{'text-secondary': activeTab.slug === 'blog'}" class="w-8 h-8"/>
                     <EllipsisHorizontalIcon v-if="tab.slug === 'more'" :class="{'text-secondary': activeTab.slug === 'more'}" class="w-8 h-8"/>
-                    <span class="block font-bold" :class="{'text-secondary': tab.slug === activeTab.slug}">{{ tab.title }}</span>
+                    <span class="block font-bold" :class="{'text-secondary': tab.slug === activeTab.slug}">{{ $t(tab.title) }}</span>
                 </div>
             </div>
         </div>
