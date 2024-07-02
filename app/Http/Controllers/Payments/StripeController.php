@@ -17,7 +17,7 @@ class StripeController extends Controller
         $user = $request->user();
 
         if ($user->subscribedToPrice($price)) {
-            return redirect()->back()->dangerBanner('You are already subscribed to that plan');
+            return redirect()->back()->dangerBanner(__('You are already subscribed to that plan'));
         }
 
         if ($user->subscribed() && $user->subscription()?->valid()) {
@@ -27,7 +27,7 @@ class StripeController extends Controller
                 ->swap($price);
 
             // Replace back() with the route where user should be redirected after successful subscription
-            return redirect()->back()->banner('You have successfully subscribed to '.$price.' plan');
+            return redirect()->back()->banner(__('You have successfully subscribed to :name plan', ['name' => $price]));
         }
 
         $checkout = $user

@@ -34,9 +34,9 @@ class MagicLinkNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('You requested a magic link to log in to our site.')
-            ->action('Log in', $this->url)
-            ->line('If you did not request this link, you can safely ignore this email.');
+            ->line(__('You requested a magic link to log in to our site.'))
+            ->action(__('Log in'), $this->url)
+            ->line(__('If you did not request this link, you can safely ignore this email.'));
     }
 
     /**

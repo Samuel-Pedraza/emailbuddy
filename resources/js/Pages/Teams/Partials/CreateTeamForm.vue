@@ -21,11 +21,11 @@ const createTeam = () => {
 <template>
     <FormSection @submitted="createTeam">
         <template #title>
-            Team Details
+            {{ $t('Team Details') }}
         </template>
 
         <template #description>
-            Create a new team to collaborate with others on projects.
+            {{ $t('Create a new team to collaborate with others on projects.') }}
         </template>
 
         <template #form>
@@ -45,7 +45,7 @@ const createTeam = () => {
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="name" value="Team Name" />
+                <InputLabel for="name" :value="$t('Team Name')" />
                 <TextInput
                     id="name"
                     v-model="form.name"
@@ -59,7 +59,7 @@ const createTeam = () => {
 
         <template #actions>
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Create
+                {{ $t('Create') }}
             </PrimaryButton>
         </template>
     </FormSection>

@@ -27,7 +27,7 @@ class MagicLinkController extends Controller
             $user->notify(new MagicLinkNotification($url));
         }
 
-        return back()->with('status', 'Magic link sent!');
+        return back()->with('status', __('Magic link sent!'));
     }
 
     public function loginWithMagicLink(Request $request, $token)

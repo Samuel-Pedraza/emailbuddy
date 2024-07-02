@@ -16,7 +16,7 @@ class LemonSqueezyController extends Controller
         $user = $request->user();
 
         if ($user->subscription()?->hasVariant($variant)) {
-            return redirect()->back()->dangerBanner('You are already subscribed to that plan');
+            return redirect()->back()->dangerBanner(__('You are already subscribed to that plan'));
         }
 
         if ($user->subscribed() && $user->subscription()?->valid()) {
@@ -26,7 +26,7 @@ class LemonSqueezyController extends Controller
                 ->swap($product, $variant);
 
             // Replace back() with the route where user should be redirected after successful subscription
-            return redirect()->back()->banner('You have successfully subscribed to '.$variant.' plan');
+            return redirect()->back()->banner(__('You have successfully subscribed to :name plan', ['name' => $variant]));
         }
 
         return $user->subscribe($variant);

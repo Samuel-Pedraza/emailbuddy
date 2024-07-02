@@ -31,15 +31,13 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Log in" />
-
     <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
         </template>
         <template #title>
             <div>
-                <p class="text-2xl font-bold">Sign in to your account</p>
+                <p class="text-2xl font-bold">{{ $t('Sign in to your account') }}</p>
             </div>
         </template>
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -47,7 +45,7 @@ const submit = () => {
         </div>
         <form @submit.prevent="submit">
             <div>
-                <InputLabel class="mb-2" for="email" value="Your email address" />
+                <InputLabel class="mb-2" for="email" :value="$t('Your email address')" />
                 <TextInput
                     id="email"
                     v-model="form.email"
@@ -56,17 +54,17 @@ const submit = () => {
                     required
                     autofocus
                     autocomplete="username"
-                    placeholder="Email address"
+                    :placeholder="$t('Email address')"
                 />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="flex items-center justify-center mt-4">
                 <button type="submit" class="btn text-white bg-secondary" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Get magic link
+                    {{ $t('Get magic link') }}
                 </button>
             </div>
-            <div class="divider">or</div>
+            <div class="divider">{{ $t('or') }}</div>
             <Google/>
         </form>
     </AuthenticationCard>
