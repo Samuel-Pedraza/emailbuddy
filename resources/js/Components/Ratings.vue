@@ -40,7 +40,7 @@
                 <input type="radio" name="rating-2" class="mask mask-star-2 bg-yellow-400" />
             </div>
             <div class="mt-1">
-                <p><span class="font-bold">987</span> developers trust us</p>
+                <p v-html="$t('pages.home.hero.trusted-by', { value: 987 })"></p>
             </div>
         </div>
     </div>

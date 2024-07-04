@@ -8,10 +8,9 @@
             <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                 <div class="lg:pr-4">
                     <div class="lg:max-w-lg">
-                        <p class="text-base font-semibold leading-7">Content with Image</p>
-                        <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">A better workflow</h1>
-                        <p class="mt-8">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <p class="mt-8">Experience the next generation of SaaS innovation with our intuitive interface and robust features. Whether you're a small business looking to optimize operations or a large enterprise seeking enterprise-level solutions, TechSprint has you covered.</p>
+                        <p class="text-base font-semibold leading-7">{{ $t('pages.home.content-with-image.subtitle') }}</p>
+                        <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{{ $t('pages.home.content-with-image.title') }}</h1>
+                        <div class="flex flex-col gap-y-8 mt-8" v-html="$t('pages.home.content-with-image.description')"></div>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ onMounted(() => {
     <button
         @click.prevent='openCheckout'
         class='mb-6 btn btn-secondary btn-wide text-center mx-auto flex'>
-        Buy Product
+        {{ $t('Buy Product') }}
     </button>
 </template>
 

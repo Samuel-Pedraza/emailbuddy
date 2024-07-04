@@ -6,9 +6,9 @@ defineProps({currentSubscription: String, checkout: Object})
 
 const plans = [
     {
-        name: 'Free',
+        name: 'payment.plans.free',
         slug: 'free',
-        description: 'Individuals or small businesses with moderate social media needs.',
+        description: 'payment.plans.free.description',
         price: '0',
         interval: 'month',
         features: [
@@ -23,13 +23,13 @@ const plans = [
         priceId: null
     },
     {
-        name: 'Starter',
+        name: 'payment.plans.starter',
         slug: 'starter', // used by stripe, should be your stripe price id
-        description: 'Individuals or small businesses with moderate social media needs.',
+        description: 'payment.plans.starter.description',
         price: '9.99',
         interval: 'month',
         features: [
-            'Everything in free',
+            'Everything in "Free"',
             'Feature 6',
             'Feature 7',
             'Feature 8',
@@ -39,9 +39,9 @@ const plans = [
         priceId: 'pri_01ht4q7xjjbgmeyxr7sgkmzkmt' // for Paddle Only
     },
     {
-        name: 'Pro',
+        name: 'payment.plans.pro',
         slug: 'pro', // used by stripe, should be your stripe price id
-        description: 'Professional bloggers, influencers, or mid-sized businesses.',
+        description: 'payment.plans.pro.description',
         price: '19.99',
         interval: 'month',
         features: [
@@ -61,25 +61,25 @@ const plans = [
     <div id="pricing" class="py-8 sm:py-16 px-8">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:text-center">
-                <p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Choose Your Plan</p>
-                <p class="mt-6 text-lg leading-8">Select the perfect plan that fits your social media needs. Start with our <b>7</b> days free trial and upgrade anytime to unlock more powerful features</p>
+                <p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{{ $t('payment.title') }}</p>
+                <p class="mt-6 text-lg leading-8" v-html="$t('payment.description', { value: 7 })"></p>
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mx-auto max-w-6xl my-8">
             <div v-for="plan in plans" class="px-8 py-12 border border-base-200 rounded-3xl shadow-xl hover:shadow-2xl cursor-pointer">
-                <p class="text-3xl font-extrabold mb-2">{{ plan.name }}</p>
+                <p class="text-3xl font-extrabold mb-2">{{ $t(plan.name) }}</p>
                 <p class="mb-6">
-                    <span>Best For: </span> <span>{{ plan.description }}</span></p>
+                    <span>{{ $t('Best For') }}: </span> <span>{{ $t(plan.description) }}</span></p>
                 <p class="mb-6">
                     <span class="text-4xl font-extrabold">${{ plan.price }}</span>
                     <span v-if="plan.price !== '0'" class="text-base font-medium">/{{ plan.interval }}</span>
                 </p>
 
                 <PaddleButton :priceId="plan.priceId"/>
-                <p class="text-sm mb-4">*7 Days Free Trial</p>
+                <p class="text-sm mb-4">*{{ $t('payment.free-trial', { value: 7 }) }}</p>
                 <ul>
                     <li v-for="feature in plan.features" class="flex">
-                        - {{ feature }}
+                        - {{ $t(feature) }}
                     </li>
                 </ul>
             </div>

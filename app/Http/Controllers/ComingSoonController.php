@@ -13,6 +13,6 @@ class ComingSoonController extends Controller
             'email' => $request->get('email'),
         ]);
 
-        return redirect()->back()->banner('Thanks for subscription! We will keep you updated.');
+        return redirect()->back()->banner(__('Thanks for subscription! We will keep you updated.'));
     }
 }

@@ -18,8 +18,8 @@ class BlogController extends Controller
         return Inertia::render('Blog', [
             'articles' => $articles,
             'seo' => [
-                'title' => 'Blog',
-                'description' => 'Blog Description',
+                'title' => __('Blog'),
+                'description' => __('Blog Description'),
             ],
         ]);
     }
