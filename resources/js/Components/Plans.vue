@@ -31,6 +31,7 @@ const plans = [
             'Feature 7',
             'Feature 8',
         ],
+        bestseller: true,
         // productId: 193449, // for lemonsqueezy only
         // variantId: 255829, // for lemonsqueezy only
     },
@@ -61,7 +62,8 @@ const plans = [
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mx-auto max-w-6xl my-8">
-            <div v-for="plan in plans" class="px-8 py-12 border border-base-200 rounded-3xl shadow-xl hover:shadow-2xl cursor-pointer">
+            <div v-for="plan in plans" class="relative px-8 py-12 border border-base-200 rounded-3xl shadow-xl hover:shadow-2xl cursor-pointer" :class="{'border-secondary border-2': plan.bestseller}">
+                <span v-if="plan.bestseller" class="absolute top-5 right-5 bg-secondary text-white rounded-full px-4 font-semibold sm:font-medium text-sm sm:text-base">bestseller</span>
                 <p class="text-3xl font-extrabold mb-2">{{ $t(plan.name) }}</p>
                 <p class="mb-6 h-16">
                     <span>{{ $t('Best For') }}: </span> <span>{{ $t(plan.description) }}</span></p>
