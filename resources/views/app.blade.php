@@ -6,6 +6,13 @@
 
         @include('seo.metatags', ['seo' => $page['props']['seo'] ?? null])
 
+
+        <!-- Auto Dark-Mode -->
+        <script>
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dim');
+            }
+        </script>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

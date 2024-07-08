@@ -9,7 +9,8 @@ import HomeLayout from "@/Layouts/HomeLayout.vue";
 import PaddlePlans from "@/Components/Paddle/PaddlePlans.vue";
 import Features from "@/Components/Features.vue";
 import AboutMe from "@/Components/AboutMe.vue";
-
+import FeaturesFlow from "@/Components/FeaturesFlow.vue";
+import Integrations from "@/Components/Integrations.vue";
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
@@ -21,6 +22,8 @@ defineProps({
     <HomeLayout>
         <Hero/>
         <Partners/>
+        <FeaturesFlow/>
+        <Integrations/>
         <ContentWithImage/>
 <!--        for Paddle-->
 <!--        <PaddlePlans/>-->
