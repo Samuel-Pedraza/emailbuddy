@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Lang;
+use Tests\TestCase;
 
 class TranslationTest extends TestCase
 {
