@@ -30,6 +30,7 @@
                 <li><a href="#">{{ $t('How It Works') }}</a></li>
                 <li><a :href="route('blog.index')">{{ $t('Blog') }}</a></li>
                 <li><a :href="route('coming-soon')">{{ $t('Coming Soon') }}</a></li>
+                <li><a :href="route('changelog')">{{ $t('Changelog') }}</a></li>
             </ul>
         </div>
         <div class="navbar-end">
