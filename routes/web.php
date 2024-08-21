@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OgImageController;
+use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\Payments\LemonSqueezyController;
 use App\Http\Controllers\Payments\PaddleController;
 use App\Http\Controllers\Payments\StripeController;
@@ -26,6 +27,7 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('sitemap', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('changelog', [ChangelogController::class, 'index'])->name('changelog');
 
 // Demo Coming Soon Page
 Route::get('coming-soon', function () {
