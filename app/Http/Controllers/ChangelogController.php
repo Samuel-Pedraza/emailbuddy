@@ -24,7 +24,7 @@ class ChangelogController extends Controller
                 'description' => 'See what\'s new in Larafast Starter Kits: TALL, VILT, API and Directories',
                 'canonical' => route('changelog'),
                 'image' => route('og-image', [
-                    'title' =>'Larafast Changelog',
+                    'title' => 'Larafast Changelog',
                     'description' => "See what's new in Larafast Starter Kits: TALL, VILT, API and Directories",
                 ]),
             ],

@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-// Use this for Stripe
-use Laravel\Cashier\Billable;
+use Laravel\Cashier\Billable; // Use this for Stripe
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
@@ -91,9 +90,12 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         // Check if user can access panel,
-        //        return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
+        // return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
 
-        return $this->is_admin || $this->hasRole('admin');
+        // $this->is_admin is deprecated and not used in Larafast after September 1, 2024
+        // Instead use role admin
+
+        return $this->hasRole('admin') || $this->is_admin;
     }
 
     public function trialIsUsed()

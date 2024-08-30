@@ -31,15 +31,20 @@ class StripeSubscriptionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('stripe_id')
+                    ->label('Stripe ID')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('user.name')
+                    ->label('User Name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('user.email')
+                    ->label('User Email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('stripe_status')
+                    ->label('Status')
                     ->searchable()
                     ->badge(),
-                Tables\Columns\TextColumn::make('stripe_price'),
+                Tables\Columns\TextColumn::make('stripe_price')
+                    ->label('Price'),
                 Tables\Columns\TextColumn::make('quantity'),
                 Tables\Columns\TextColumn::make('trial_ends_at')->dateTime(),
                 Tables\Columns\TextColumn::make('ends_at')->dateTime(),

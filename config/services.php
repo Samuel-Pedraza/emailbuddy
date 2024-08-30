@@ -78,4 +78,8 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => '/auth/callback/google',
     ],
+
+    'resend' => [
+        'key' => env('RESEND_API_KEY'),
+    ],
 ];

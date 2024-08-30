@@ -31,7 +31,6 @@ class UserResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('password')
                     ->required(),
-                Forms\Components\Toggle::make('is_admin'),
             ])
             ->columns(1);
     }
@@ -45,9 +44,6 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('trial_is_used')
-                    ->sortable()
-                    ->boolean(),
-                Tables\Columns\IconColumn::make('is_admin')
                     ->sortable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
