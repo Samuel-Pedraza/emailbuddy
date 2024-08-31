@@ -33,10 +33,13 @@ class LemonSqueezyOrderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('lemon_squeezy_id')
+                    ->label('LemonSqueezy ID')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('billable.name')
+                    ->label('User Name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('billable.email')
+                    ->label('User Email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('order_number')
                     ->searchable(),

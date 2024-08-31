@@ -30,7 +30,41 @@ class LemonSqueezySubscriptionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('lemon_squeezy_id')
+                    ->label('LemonSqueezy ID')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('billable.name')
+                    ->label('User Name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('billable.email')
+                    ->label('User Email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('product_id')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('variant_id')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('card_brand')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('card_last_four')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('pause_mode')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('pause_resumes_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('trial_ends_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('renews_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('ends_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime(),
             ])
             ->filters([
                 //

@@ -12,7 +12,7 @@
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a href="#">{{ $t('About Us') }}</a></li>
                     <li><a href="#pricing">{{ $t('Pricing') }}</a></li>
-                    <li><a href="#">{{ $t('How It Works') }}</a></li>
+                    <li><a href="#features">{{ $t('How It Works') }}</a></li>
                     <li><a :href="route('blog.index')">{{ $t('Blog') }}</a></li>
                 </ul>
             </div>
@@ -27,7 +27,7 @@
             <ul class="menu menu-horizontal px-1">
                 <li><a href="#">{{ $t('About Us') }}</a></li>
                 <li><a href="#pricing">{{ $t('Pricing') }}</a></li>
-                <li><a href="#">{{ $t('How It Works') }}</a></li>
+                <li><a href="#features">{{ $t('How It Works') }}</a></li>
                 <li><a :href="route('blog.index')">{{ $t('Blog') }}</a></li>
                 <li><a :href="route('coming-soon')">{{ $t('Coming Soon') }}</a></li>
                 <li><a :href="route('changelog')">{{ $t('Changelog') }}</a></li>

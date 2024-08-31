@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class Subscribed
 {
@@ -13,11 +12,11 @@ class Subscribed
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         if (! $request->user()?->subscribed()) {
             // Redirect user to billing page and ask them to subscribe...
-            return redirect('/billing');
+            return route('dashboard');
         }
 
         return $next($request);
