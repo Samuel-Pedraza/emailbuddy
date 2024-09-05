@@ -43,7 +43,6 @@ class MakeAdmin extends MakeUserCommand
                 label: 'Password',
                 required: true,
             )),
-            'is_admin' => true,
         ];
     }
 
