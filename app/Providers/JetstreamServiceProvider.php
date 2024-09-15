@@ -45,6 +45,9 @@ class JetstreamServiceProvider extends ServiceProvider
     {
         Jetstream::defaultApiTokenPermissions(['read']);
 
+        // Configure the roles and permissions that are available within the application.
+        // You can use pull Spatie's permissions and roles from db and set them here
+
         Jetstream::role('admin', 'Administrator', [
             'create',
             'read',

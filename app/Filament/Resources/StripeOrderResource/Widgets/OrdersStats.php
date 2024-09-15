@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\LemonSqueezyOrderResource\Widgets;
+namespace App\Filament\Resources\StripeOrderResource\Widgets;
 
-use App\Filament\Resources\LemonSqueezyOrderResource\Pages\ListOrders;
+use App\Filament\Resources\StripeOrderResource\Pages\ListStripeOrders;
 use Filament\Widgets\Concerns\InteractsWithPageTable;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
@@ -15,20 +15,20 @@ class OrdersStats extends BaseWidget
 
     protected function getTablePage(): string
     {
-        return ListOrders::class;
+        return ListStripeOrders::class;
     }
 
     protected function getStats(): array
     {
         $orders = $this->getPageTableQuery()->get();
 
-        $total = $orders->sum('total') / 100;
-        $totalToday = $orders->where('created_at', '>', today()->startOfDay())->sum('total') / 100;
-        $totalYesterday = $orders->whereBetween('created_at', [today()->subDay()->startOfDay(), today()->startOfDay()])->sum('total') / 100;
-        $lastSevenDays = $orders->where('created_at', '>', now()->subDays(7)->startOfDay())->sum('total') / 100;
+        $total = $orders->sum('amount') / 100;
+        $totalToday = $orders->where('created_at', '>', today()->startOfDay())->sum('amount') / 100;
+        $totalYesterday = $orders->whereBetween('created_at', [today()->subDay()->startOfDay(), today()->startOfDay()])->sum('amount') / 100;
+        $lastSevenDays = $orders->where('created_at', '>', now()->subDays(7)->startOfDay())->sum('amount') / 100;
         $previousSevenDays = $orders->whereBetween('created_at', [now()->subDays(14)->startOfDay(), now()->subDays(7)->startOfDay()])->sum('total') / 100;
-        // $lastMonth = $orders->where('created_at', '>', now()->subMonth()->startOfDay())->sum('total') / 100;
-        // $previousMonth = $orders->whereBetween('created_at', [now()->subMonths(2)->startOfDay(), now()->subMonth()->startOfDay()])->sum('total') / 100;
+        // $lastMonth = $orders->where('created_at', '>', now()->subMonth()->startOfDay())->sum('amount') / 100;
+        // $previousMonth = $orders->whereBetween('created_at', [now()->subMonths(2)->startOfDay(), now()->subMonth()->startOfDay()])->sum('amount') / 100;
 
         return [
             Stat::make('Total Orders', $orders->count())

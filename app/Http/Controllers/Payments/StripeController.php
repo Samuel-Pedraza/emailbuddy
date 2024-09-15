@@ -51,6 +51,9 @@ class StripeController extends Controller
         return $request->user()->checkout($price, [
             'success_url' => route('stripe.success').'?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('dashboard'),
+            'metadata' => [
+                'price' => $price,
+            ],
         ]);
     }
 

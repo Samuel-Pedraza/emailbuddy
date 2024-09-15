@@ -18,15 +18,57 @@ class UsersStats extends BaseWidget
 
     protected function getStats(): array
     {
-        $registeredToday = $this->getPageTableQuery()->where('created_at', '>', today()->startOfDay())->count();
-        $lastSevenDays = $this->getPageTableQuery()->where('created_at', '>', now()->subDays(7)->startOfDay())->count();
-        $lastMonth = $this->getPageTableQuery()->where('created_at', '>', now()->subMonth()->startOfDay())->count();
+        $users = $this->getPageTableQuery()->get();
+
+        $registeredToday = $users->where('created_at', '>', today()->startOfDay())->count();
+        $registeredYesterday = $users->whereBetween('created_at', [today()->subDay()->startOfDay(), today()->startOfDay()])->count();
+        $lastSevenDays = $users->where('created_at', '>', now()->subDays(7)->startOfDay());
+        $previousSevenDays = $users->whereBetween('created_at', [now()->subDays(14)->startOfDay(), now()->subDays(7)->startOfDay()])->count();
+        $lastMonth = $users->where('created_at', '>', now()->subMonth()->startOfDay());
+        $previousMonth = $users->whereBetween('created_at', [now()->subMonths(2)->startOfDay(), now()->subMonth()->startOfDay()])->count();
 
         return [
-            Stat::make('Total Users', $this->getPageTableQuery()->count()),
-            Stat::make('Registered Today', $registeredToday),
-            Stat::make('Last 7 Days', $lastSevenDays),
-            Stat::make('Last 30 Days', $lastMonth),
+            Stat::make('Total Users', $users->count())
+                ->chart($users
+                    ->sortBy('created_at')
+                    ->groupBy('created_at')
+                    ->mapWithKeys(function ($result, $key) {
+                        return [$key => $result->count()];
+                    })
+                    ->values()
+                    ->toArray())
+                ->color('success'),
+
+            Stat::make('Registered Today', $registeredToday)
+                ->description($registeredToday - $registeredYesterday)
+                ->descriptionIcon($registeredToday >= $registeredYesterday ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
+                ->color($registeredToday >= $registeredYesterday ? 'success' : 'danger'),
+
+            Stat::make('Last 7 Days', $lastSevenDays->count())
+                ->description($lastSevenDays->count() - $previousSevenDays)
+                ->descriptionIcon($lastSevenDays->count() >= $previousSevenDays ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
+                ->chart($lastSevenDays
+                    ->sortBy('created_at')
+                    ->groupBy('created_at')
+                    ->mapWithKeys(function ($result, $key) {
+                        return [$key => $result->count()];
+                    })
+                    ->values()
+                    ->toArray())
+                ->color($lastSevenDays->count() >= $previousSevenDays ? 'success' : 'danger'),
+
+            Stat::make('Last 30 Days', $lastMonth->count())
+                ->description($lastMonth->count() - $previousMonth)
+                ->descriptionIcon($lastMonth->count() >= $previousMonth ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
+                ->chart($lastMonth
+                    ->sortBy('created_at')
+                    ->groupBy('created_at')
+                    ->mapWithKeys(function ($result, $key) {
+                        return [$key => $result->count()];
+                    })
+                    ->values()
+                    ->toArray())
+                ->color($lastMonth->count() >= $previousMonth ? 'success' : 'danger'),
         ];
     }
 }
