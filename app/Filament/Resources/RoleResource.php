@@ -18,6 +18,8 @@ class RoleResource extends Resource
 
     protected static ?string $navigationGroup = 'Users';
 
+    protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form

@@ -12,6 +12,6 @@ class UserRegisteredListener
      */
     public function handle(Registered $event): void
     {
-        $event->user->notify(new WelcomeNotification());
+        $event->user->notify(new WelcomeNotification);
     }
 }

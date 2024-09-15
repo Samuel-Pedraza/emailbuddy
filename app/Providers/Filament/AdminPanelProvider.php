@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Widgets\UsersStats;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -52,6 +53,19 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Payments')
+                    ->icon('heroicon-o-banknotes'),
+                NavigationGroup::make()
+                    ->label('Content')
+                    ->icon('heroicon-o-document-text'),
+                NavigationGroup::make()
+                    ->label('Users')
+                    ->icon('heroicon-o-users'),
+
+            ])
+            ->sidebarCollapsibleOnDesktop();
     }
 }

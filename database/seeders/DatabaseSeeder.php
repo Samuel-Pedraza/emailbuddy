@@ -32,13 +32,18 @@ class DatabaseSeeder extends Seeder
                     'billable_id' => User::factory()->create(),
                     'billable_type' => User::class,
                     'identifier' => fake()->unique()->uuid(),
+                    'ordered_at' => fake()->dateTimeBetween('-30 days', 'now'),
                 ]);
             } catch (\Exception $exception) {
                 continue;
             }
         }
 
-        // \App\Models\User::factory(100)->create();
+        \App\Models\User::factory(100)->create(
+            [
+                'created_at' => fake()->dateTimeBetween('-7 days', 'now'),
+            ]
+        );
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

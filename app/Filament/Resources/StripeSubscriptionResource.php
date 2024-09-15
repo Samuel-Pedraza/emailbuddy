@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\StripeSubscriptionResource\Pages;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -22,7 +23,30 @@ class StripeSubscriptionResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('stripe_id')
+                    ->label('Stripe ID')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->required(),
+                Forms\Components\TextInput::make('stripe_status')
+                    ->label('Status')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('stripe_price')
+                    ->label('Price')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('quantity')
+                    ->numeric()
+                    ->required(),
+                Forms\Components\DateTimePicker::make('trial_ends_at'),
+                Forms\Components\DateTimePicker::make('ends_at'),
+                Forms\Components\DateTimePicker::make('created_at')
+                    ->disabled()
+                    ->dehydrated(false),
             ]);
     }
 

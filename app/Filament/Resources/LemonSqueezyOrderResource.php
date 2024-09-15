@@ -44,12 +44,15 @@ class LemonSqueezyOrderResource extends Resource
                 Tables\Columns\TextColumn::make('order_number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
+                    ->sortable()
                     ->badge(),
                 // Change the currency to match your store currency
                 Tables\Columns\TextColumn::make('total')
                     ->money('USD', divideBy: 100)
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('ordered_at')->dateTime(),
+                Tables\Columns\TextColumn::make('ordered_at')
+                    ->sortable(),
             ])
             ->filters([
                 //

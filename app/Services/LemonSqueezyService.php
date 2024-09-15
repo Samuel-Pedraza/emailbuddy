@@ -7,10 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class LemonSqueezyService
 {
-    public function __construct(public PendingRequest $client, public ?string $store = null)
-    {
-
-    }
+    public function __construct(public PendingRequest $client, public ?string $store = null) {}
 
     public function setKey($key): static
     {
