@@ -36,7 +36,6 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
-            'is_admin' => $this->faker->boolean(50),
             'trial_is_used' => $this->faker->boolean(50),
             'created_at' => $this->faker->dateTimeBetween('-35 days'),
         ];
