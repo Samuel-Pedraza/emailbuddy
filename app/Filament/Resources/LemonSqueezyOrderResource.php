@@ -48,7 +48,7 @@ class LemonSqueezyOrderResource extends Resource
                     ->badge(),
                 // Change the currency to match your store currency
                 Tables\Columns\TextColumn::make('total')
-                    ->money('USD', divideBy: 100)
+                    ->money(config('services.cashier.currency'), divideBy: 100)
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('ordered_at')
