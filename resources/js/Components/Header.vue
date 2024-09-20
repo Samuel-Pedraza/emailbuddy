@@ -34,7 +34,8 @@
             </ul>
         </div>
         <div class="navbar-end">
-            <a :href="route('login')" class="btn btn-secondary">{{ $t('Get Started') }}</a>
+            <a v-if="$page.props.auth.user" :href="route('dashboard')" class="btn btn-primary">{{ $t('Dashboard') }}</a>
+            <a v-else :href="route('login')" class="btn btn-secondary">{{ $t('Get Started') }}</a>
         </div>
     </div>
 </template>
