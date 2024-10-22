@@ -66,6 +66,17 @@ return [
         ],
     ],
 
+    'xai' => [
+        'key' => env('XAI_KEY'),
+        'urls' => [
+            'base' => 'https://api.x.ai/v1',
+            'completion' => 'chat/completions',
+        ],
+        'models' => [
+            'grok-beta' => 'grok-beta',
+        ],
+    ],
+    
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
