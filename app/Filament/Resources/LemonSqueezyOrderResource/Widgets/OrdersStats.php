@@ -9,8 +9,6 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class OrdersStats extends BaseWidget
 {
-    protected static ?string $heading = 'Chart';
-
     use InteractsWithPageTable;
 
     protected function getTablePage(): string

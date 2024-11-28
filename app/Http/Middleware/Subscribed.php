@@ -12,7 +12,7 @@ class Subscribed
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         if (! $request->user()?->subscribed()) {
             // Redirect user to billing page and ask them to subscribe...
