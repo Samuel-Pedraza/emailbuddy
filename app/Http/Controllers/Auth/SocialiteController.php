@@ -8,7 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
-
+use Illuminate\Auth\Events\Registered;
 class SocialiteController extends Controller
 {
     public function redirect($driver)
@@ -36,6 +36,11 @@ class SocialiteController extends Controller
             'name' => $userData->getName(),
             'password' => Hash::make(Str::random()),
         ]);
+
+        // Dispatch the Registered event if the user was just created
+        if ($user->wasRecentlyCreated) {
+            event(new Registered($user));
+        }
 
         $user->socialAccounts()->firstOrCreate(['account_id' => $userData->getId()], [
             'provider' => $driver,
