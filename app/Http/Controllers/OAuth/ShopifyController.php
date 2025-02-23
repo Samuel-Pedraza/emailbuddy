@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\OAuth;
 
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\Controller;
 
 class ShopifyController extends Controller
 {

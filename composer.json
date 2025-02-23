@@ -13,6 +13,7 @@
         "filament/filament": "^3.2",
         "filament/tables": "^3.2",
         "filament/widgets": "^3.2",
+        "google/apiclient": "^2.18",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/cashier": "^15.2",
