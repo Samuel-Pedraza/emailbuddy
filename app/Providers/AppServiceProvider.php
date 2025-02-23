@@ -6,6 +6,7 @@ use App\Services\SchemaOrg;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::unguard();
 
+        Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
+            $event->extendSocialite('shopify', \SocialiteProviders\Shopify\Provider::class);
+        });
         // View::share(['schema' => ['organization' => app(SchemaOrg::class)->organization()]]);
     }
 }

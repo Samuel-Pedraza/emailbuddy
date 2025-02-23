@@ -30,7 +30,7 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-    
+
     'cashier' => [
         'currency' => env('CASHIER_CURRENCY', 'USD'),
         'currency_symbol' => env('CASHIER_CURRENCY_SYMBOL', '$'),
@@ -76,7 +76,7 @@ return [
             'grok-beta' => 'grok-beta',
         ],
     ],
-    
+
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
@@ -98,4 +98,19 @@ return [
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
+
+    'google' => [
+        'client_id'     => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect'      => env('GOOGLE_REDIRECT_URI'),
+    ],
+
+    'shopify' => [
+        'client_id' => env('SHOPIFY_CLIENT_ID'),
+        'client_secret' => env('SHOPIFY_CLIENT_SECRET'),
+        'redirect' => env('SHOPIFY_REDIRECT_URI'),
+        'subdomain' => env('SHOPIFY_SUBDOMAIN'),
+      ],
+
+
 ];

@@ -25,6 +25,7 @@
         "lemonsqueezy/laravel": "^1.5",
         "resend/resend-php": "^0.13.0",
         "sentry/sentry-laravel": "^4.4",
+        "socialiteproviders/shopify": "^4.2",
         "spatie/browsershot": "^4.0",
         "spatie/image": "^3.5",
         "spatie/laravel-permission": "^6.7",

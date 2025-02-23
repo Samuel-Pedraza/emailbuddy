@@ -51,6 +51,10 @@ const logout = () => {
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     {{ $t('Dashboard') }}
                                 </NavLink>
+                                <NavLink :href="route('inbox.index')" :active="route().current('inbox.index')">
+                                    {{ $t('Inbox') }}
+                                </NavLink>
+
                             </div>
                         </div>
 

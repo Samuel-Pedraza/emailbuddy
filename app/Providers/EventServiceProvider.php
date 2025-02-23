@@ -27,7 +27,11 @@ class EventServiceProvider extends ServiceProvider
         WebhookHandled::class => [
             LemonSqueezyEventListener::class,
         ],
-    ];
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+
+            \SocialiteProviders\Shopify\ShopifyExtendSocialite::class.'@handle',
+        ],
+        ];
 
     /**
      * Register any events for your application.

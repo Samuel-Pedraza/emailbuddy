@@ -9,6 +9,9 @@ use App\Http\Controllers\OgImageController;
 use App\Http\Controllers\Payments\LemonSqueezyController;
 use App\Http\Controllers\Payments\PaddleController;
 use App\Http\Controllers\Payments\StripeController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\ShopifyController ;
+use App\Http\Controllers\InboxController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +78,17 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
+    Route::get('/google/redirect', [GoogleController::class, 'redirectToGoogle']);
+    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+    Route::get('/shopify/redirect', [ShopifyController::class, 'redirectToShopify']);
+    Route::get('/shopify/callback', [ShopifyController::class, 'handleShopifyCallback']);
+
+    Route::prefix('inbox')->name('inbox.')->group(function () {
+        Route::get('/', [InboxController::class, 'index'])->name('index');
+        Route::get('/{email}', [InboxController::class, 'show'])->name('show');
+    });
+
     Route::prefix('stripe')->name('stripe.')->group(function () {
         Route::get('subscription-checkout/{price}', [StripeController::class, 'subscriptionCheckout'])->name('subscription.checkout');
         // If your product checkout does not require auth user,
@@ -92,9 +106,6 @@ Route::middleware([
         Route::get('product-checkout/{variantId}', [LemonSqueezyController::class, 'productCheckout'])->name('product.checkout');
         Route::get('billing', [LemonSqueezyController::class, 'billing'])->name('billing'); // Redirects to Customer Portal
     });
-
-    // Paddle Routes
-    // Paddle Plan Checkouts can be found in resources/js/Components/Paddle/PaddlePlans.vue component
 
     Route::prefix('paddle')->name('paddle.')->group(function () {
         Route::get('/subscription/{price}/swap', [PaddleController::class, 'subscriptionSwap'])
